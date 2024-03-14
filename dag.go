@@ -78,9 +78,9 @@ func StoreDir(store KVStore, dir Dir, h hash.Hash) []byte {
 		}
 	}
 
-	// 将对象序列化为字节数组
+	
 	var serializedObj []byte
-	// 这里使用你自己的序列化方法
+	
 	serializedObj = serializeObject(obj)
 
 	// 将对象数据写入KVStore
@@ -114,16 +114,14 @@ func hashData(data []byte, h hash.Hash) []byte {
 	return h.Sum(nil)
 }
 
-// 自定义序列化方法
+
 func serializeObject(obj Object) []byte {
-	// 这里使用你自己的序列化方法，这里只是示例
-	// 使用 encoding/gob 或 encoding/json 等进行序列化
-	// 这里假设使用 encoding/gob 进行示例
+	
 	var buf bytes.Buffer
 	enc := gob.NewEncoder(&buf)
 	err := enc.Encode(obj)
 	if err != nil {
-		// 处理序列化错误
+		
 		return nil
 	}
 	return buf.Bytes()
